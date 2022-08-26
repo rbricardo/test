@@ -20,7 +20,7 @@ const Preview = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center min-h-[552px] rounded-lg w-auto lg:min-w-full p-14 bg-white">
+      <div className="flex flex-col justify-center items-center min-h-[552px] rounded-lg lg:min-w-full p-14 bg-white">
         <div className="lg:w-[542px] w-auto text-center">
           <p className="text-4xl font-bold">{route?.title}</p>
         </div>

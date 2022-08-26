@@ -51,7 +51,7 @@ const Step = () => {
     setRoutePath(newRoute.name);
   };
   return (
-    <div className="w-full min-h-screen px-96 pt-20 bg-amber-600">
+    <div className="lg:w-full w-auto min-h-screen lg:px-96 pt-20 bg-amber-600">
       <Preview
         route={route}
         buttonTitle={routeIndex !== 0 && "next"}

@@ -17,7 +17,7 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={cx("px-8 py-2 h-[43px] rounded-full text-white", className, {
+      className={cx("px-8 py-2 lg:h-[43px] h-auto lg:rounded-full rounded-3xl text-white", className, {
         "bg-[#0072CE]": !disabled,
         "bg-gray-400": disabled,
       })}
