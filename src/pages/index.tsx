@@ -115,9 +115,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Zappy Ride App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col items-center p-10 min-h-screen w-full bg-gradient-to-r from-gray-400 to-gray-800">
-        <div className="flex lg:flex-row items-center lg:items-start flex-col shadow-lg w-full lg:w-auto min-h-[800px]">
-          <div className="lg:w-1/2 w-full pt-10 bg-slate-100 lg:rounded-t-none lg:rounded-tl-md lg:rounded-bl-md rounded-t-md px-10">
+      <main className="flex flex-col items-center p-10 min-h-screen lg:w-full bg-gradient-to-r from-gray-400 to-gray-800">
+        <div className="flex lg:flex-row items-center lg:items-start flex-col shadow-lg w-auto lg:w-full min-h-[800px]">
+          <div className="lg:w-1/2 w-auto pt-10 bg-slate-100 lg:rounded-t-none lg:rounded-tl-md lg:rounded-bl-md rounded-t-md px-10">
             <div
               className={cx(
                 routes.length ? "flex" : "hidden",
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col lg:w-1/2 w-full pb-10 lg:rounded-r-lg rounded-b-md bg-amber-600 gap-10 ">
+          <div className="flex flex-col lg:w-1/2 w-auto pb-10 lg:rounded-r-lg rounded-b-md bg-amber-600 gap-10 ">
             <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-tr-lg">
               <p>
                 Step {currentRouteIndex} of {routes.length}

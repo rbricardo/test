@@ -55,7 +55,7 @@ const StepEditor = ({ route, onRouteInput, onSubmit }: StepEditorProps) => {
   }
 
   return (
-    <div className="flex flex-col min-w-full rounded px-40 py-10">
+    <div className="flex flex-col lg:w-full w-auto rounded lg:px-40 py-10">
       <Input
         label="Route name (URL)"
         placeholder="Route name (URL)"

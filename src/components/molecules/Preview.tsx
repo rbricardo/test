@@ -20,11 +20,11 @@ const Preview = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center min-h-[552px] rounded-lg sm:min-w-full p-14 bg-white">
-        <div className="w-[542px] text-center">
+      <div className="flex flex-col justify-center items-center min-h-[552px] rounded-lg w-auto lg:min-w-full p-14 bg-white">
+        <div className="lg:w-[542px] w-auto text-center">
           <p className="text-4xl font-bold">{route?.title}</p>
         </div>
-        <div className="w-[458px] text-center">
+        <div className="lg:w-[458px] w-auto text-center">
           <p className="text-base mt-6">{route?.subTitle}</p>
         </div>
         <div className="py-14 flex flex-col gap-10">
@@ -41,7 +41,7 @@ const Preview = ({
         </div>
         <div
           className={cx(
-            "w-full flex",
+            "lg:w-full w-auto flex",
             !hasPrevious || !onNext ? "justify-center" : "justify-between"
           )}
         >
