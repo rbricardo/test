@@ -1,32 +1,22 @@
-import React, { createElement, useEffect, useState } from "react";
-import { RouteItem, RouteSelectItem, RouteTextItem } from "../../pages/types";
+import type { RouteItem, RouteSelectItem, RouteTextItem } from "../../types";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 
-type ItemEditorProps<T extends RouteItem = RouteItem> = {
+type ItemEditorProps<T> = {
   item: T;
   onItemInput: (item: T) => void;
 };
 
-export function FieldEditor<T extends RouteItem>({
+export function FieldEditor<T>({
   field,
   item,
   onItemInput,
   ...props
-}: {
-  field: {
-    [key in keyof T]: T[key] extends string
-      ? key extends "type"
-        ? never
-        : key
-      : never;
-  }[keyof T];
-} & ItemEditorProps<T> &
-  React.ComponentProps<typeof Input>) {
+}: ItemEditorProps<T> & { field: Exclude<keyof T, "type">  } & React.ComponentProps<typeof Input>) {
   return (
     <Input
       {...props}
-      value={item[field]}
+      value={item[field] as unknown as string}
       onChange={(e) =>
         onItemInput({
           ...item,
@@ -112,15 +102,16 @@ export const SelectEditor: React.FC<ItemEditorProps<RouteSelectItem>> = ({
   );
 };
 
-export default function ItemEditor(props: ItemEditorProps) {
+export default function ItemEditor(props: ItemEditorProps<RouteItem>) {
   switch (props.item.type) {
     case "select":
-      return <SelectEditor {...props} />;
+      return <SelectEditor {...props as ItemEditorProps<RouteSelectItem>} />;
 
     case "input":
-      return <InputEditor {...props} />;
+      return <InputEditor {...props as ItemEditorProps<RouteTextItem>} />;
 
     default:
       break;
   }
+  return null
 }

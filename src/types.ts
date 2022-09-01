@@ -2,7 +2,6 @@ export type RouteTextItem = {
   description: string;
   label: string;
   type: "input";
-  value: string;
 };
 
 export type RouteIconItem = {

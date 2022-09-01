@@ -1,21 +1,33 @@
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../../components/atoms/Button";
 import Preview from "../../components/molecules/Preview";
 import useShallowRoute from "../../hooks/useShallowRoute";
-import { Route } from "../types";
+import { Route } from "../../types";
 
-const Step = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { name } = context.query;
+  return {
+    props: {
+      name,
+    },
+  };
+};
+
+type StepProps = {
+  name: string;
+};
+
+const Step = ({ name }: StepProps) => {
   const router = useRouter();
-
-  const { name }: any = router.query;
-  const [routes, setRoutes] = useState<Route[] | null>(null);
+  const [routes, setRoutes] = useState<Route[]>([]);
   const [route, setRoute] = useState<Route | null>(null);
-  const [routeIndex, setRouteIndex] = useState<number | null>(null);
+  const [routeIndex, setRouteIndex] = useState<number>(0);
   const { setRoutePath } = useShallowRoute();
 
   useEffect(() => {
-    const persistedRoutes = JSON.parse(localStorage.getItem("routes"));
+    const persistedRoutes = JSON.parse(localStorage.getItem("routes") || "[]");
     setRoutes(persistedRoutes);
     setRoute(
       persistedRoutes.find((route: Route) => {
@@ -38,13 +50,18 @@ const Step = () => {
     );
 
   const onNext = () => {
+    if (!routes) return;
+
     const newRoute = routes[routeIndex + 1];
+
     setRoute(newRoute);
     setRouteIndex((prev: any) => prev + 1);
     setRoutePath(newRoute.name);
   };
 
   const onBack = () => {
+    if (!routes) return;
+
     const newRoute = routes[routeIndex - 1];
     setRoute(newRoute);
     setRouteIndex((prev: any) => prev - 1);
@@ -56,10 +73,10 @@ const Step = () => {
         routeIndex={routeIndex}
         routes={routes}
         route={route}
-        buttonTitle={routeIndex !== 0 && "next"}
+        buttonTitle={routeIndex !== 0 ? "next" : null}
         hasPrevious={routeIndex !== 0}
         onBack={onBack}
-        onNext={routes.length - 1 !== routeIndex && onNext}
+        onNext={routes && routes.length - 1 !== routeIndex ? onNext : undefined}
       />
     </div>
   );

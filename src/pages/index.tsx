@@ -6,7 +6,7 @@ import Button from "../components/atoms/Button";
 import StepEditor from "../components/molecules/StepEditor";
 import cx from "classnames";
 import Preview from "../components/molecules/Preview";
-import type { Route } from "./types";
+import type { Route } from "../types";
 import { useRouter } from "next/router";
 
 const initialRoute: Route = {
@@ -194,7 +194,9 @@ const Home: NextPage = () => {
                 routeIndex={currentRouteIndex}
                 routes={routes}
                 route={preview}
-                onNext={routes.length - 1 !== currentRouteIndex && onNext}
+                onNext={
+                  routes.length - 1 !== currentRouteIndex ? onNext : undefined
+                }
                 onBack={onBack}
                 hasPrevious={currentRouteIndex !== 0}
               />

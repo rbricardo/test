@@ -2,7 +2,7 @@ import Select from "react-select";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import cx from "classnames";
-import { Route } from "../../pages/types";
+import { Route } from "../../types";
 import FieldWrapper from "../atoms/Field";
 
 const Preview = ({
@@ -15,13 +15,14 @@ const Preview = ({
   buttonTitle,
 }: {
   routeIndex: number | null;
-  routes: Route[] | null;
+  routes: Route[];
   route: Route;
   buttonTitle?: string | null;
   hasPrevious: boolean;
   onNext?: () => void | null;
   onBack?: () => void | null;
 }) => {
+  console.log(typeof onNext, 'onNext?')
   return (
     <div className="flex flex-col gap-5">
       <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-lg">

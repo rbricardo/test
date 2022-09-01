@@ -3,7 +3,7 @@ import Select from "react-select";
 import { useState } from "react";
 import Button from "../atoms/Button";
 import ItemEditor from "../molecules/ItemEditor";
-import { Route, RouteItem } from "../../pages/types";
+import type { Route, RouteItem } from "../../types";
 
 type StepEditorProps = {
   route: Route;
@@ -18,7 +18,7 @@ const types: { value: RouteItem["type"]; label: string }[] = [
   { value: "icon", label: "Icon" },
 ];
 
-const initialState: { [key in RouteItem["type"]]: RouteItem } = {
+const initialState: { [key in RouteItem["type"]]: Extract<RouteItem, { type: key }> } = {
   select: {
     selectOptions: [],
     type: "select",
