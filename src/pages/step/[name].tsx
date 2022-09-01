@@ -4,7 +4,6 @@ import Button from "../../components/atoms/Button";
 import Preview from "../../components/molecules/Preview";
 import useShallowRoute from "../../hooks/useShallowRoute";
 import { Route } from "../types";
-import cx from "classnames";
 
 const Step = () => {
   const router = useRouter();
