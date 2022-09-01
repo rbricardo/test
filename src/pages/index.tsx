@@ -189,29 +189,10 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className="flex flex-col lg:w-1/2 w-auto pb-10 lg:rounded-r-lg rounded-b-md bg-amber-600 gap-10 ">
-            <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-tr-lg">
-              <p>
-                Step {currentRouteIndex} of {routes.length}
-              </p>
-              <div className="flex flex-row gap-5 mt-5">
-                {Array.from(
-                  { length: Math.max(1, routes.length) },
-                  (_, index) => (
-                    <div
-                      key={index}
-                      className={cx(
-                        "h-1 w-[88px]",
-                        index === currentRouteIndex
-                          ? "bg-[#0072CE]"
-                          : "bg-[#595959]"
-                      )}
-                    />
-                  )
-                )}
-              </div>
-            </div>
-            <div className="px-6">
+            <div className="p-6">
               <Preview
+                routeIndex={currentRouteIndex}
+                routes={routes}
                 route={preview}
                 onNext={routes.length - 1 !== currentRouteIndex && onNext}
                 onBack={onBack}

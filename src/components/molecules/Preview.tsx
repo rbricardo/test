@@ -6,12 +6,16 @@ import { Route } from "../../pages/types";
 import FieldWrapper from "../atoms/Field";
 
 const Preview = ({
+  routeIndex,
+  routes,
   route,
   hasPrevious,
   onNext,
   onBack,
   buttonTitle,
 }: {
+  routeIndex: number | null;
+  routes: Route[] | null;
   route: Route;
   buttonTitle?: string | null;
   hasPrevious: boolean;
@@ -19,7 +23,23 @@ const Preview = ({
   onBack?: () => void | null;
 }) => {
   return (
-    <>
+    <div className="flex flex-col gap-5">
+      <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-lg">
+        <p>
+          Step {routeIndex} of {routes.length}
+        </p>
+        <div className="flex flex-row gap-5 mt-5">
+          {Array.from({ length: Math.max(1, routes.length) }, (_, index) => (
+            <div
+              key={index}
+              className={cx(
+                "h-1 w-[88px]",
+                index === routeIndex ? "bg-[#0072CE]" : "bg-[#595959]"
+              )}
+            />
+          ))}
+        </div>
+      </div>
       <div className="flex flex-col justify-center items-center min-h-[552px] rounded-lg lg:min-w-full p-14 bg-white">
         <div className="lg:w-[542px] w-auto text-center">
           <p className="text-4xl font-bold">{route?.title}</p>
@@ -60,7 +80,7 @@ const Preview = ({
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

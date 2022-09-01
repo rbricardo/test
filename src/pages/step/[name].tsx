@@ -4,12 +4,13 @@ import Button from "../../components/atoms/Button";
 import Preview from "../../components/molecules/Preview";
 import useShallowRoute from "../../hooks/useShallowRoute";
 import { Route } from "../types";
+import cx from "classnames";
 
 const Step = () => {
   const router = useRouter();
 
   const { name }: any = router.query;
-  const [routes, setRoutes] = useState<Route | null>(null);
+  const [routes, setRoutes] = useState<Route[] | null>(null);
   const [route, setRoute] = useState<Route | null>(null);
   const [routeIndex, setRouteIndex] = useState<number | null>(null);
   const { setRoutePath } = useShallowRoute();
@@ -53,6 +54,8 @@ const Step = () => {
   return (
     <div className="lg:w-full w-auto min-h-screen lg:px-96 pt-20 bg-amber-600">
       <Preview
+        routeIndex={routeIndex}
+        routes={routes}
         route={route}
         buttonTitle={routeIndex !== 0 && "next"}
         hasPrevious={routeIndex !== 0}
