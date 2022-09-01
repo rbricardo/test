@@ -15,8 +15,8 @@ const Preview = ({
   route: Route;
   buttonTitle?: string | null;
   hasPrevious: boolean;
-  onNext?: () => void;
-  onBack?: () => void;
+  onNext?: () => void | null;
+  onBack?: () => void | null;
 }) => {
   return (
     <>

@@ -108,6 +108,14 @@ const Home: NextPage = () => {
     [routes]
   );
 
+  const onNext = () => {
+    dispatch({ type: "navigateTo", payload: currentRouteIndex + 1 });
+  };
+
+  const onBack = () => {
+    dispatch({ type: "navigateTo", payload: currentRouteIndex - 1 });
+  };
+
   return (
     <div>
       <Head>
@@ -203,7 +211,12 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="px-6">
-              <Preview route={preview} hasPrevious={currentRouteIndex !== 0} />
+              <Preview
+                route={preview}
+                onNext={routes.length - 1 !== currentRouteIndex && onNext}
+                onBack={onBack}
+                hasPrevious={currentRouteIndex !== 0}
+              />
             </div>
             <div className="flex items-center justify-center">
               <Button
