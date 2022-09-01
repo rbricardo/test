@@ -22,7 +22,7 @@ const Preview = ({
   onNext?: () => void | null;
   onBack?: () => void | null;
 }) => {
-  console.log(typeof onNext, 'onNext?')
+
   return (
     <div className="flex flex-col gap-5">
       <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-lg">
