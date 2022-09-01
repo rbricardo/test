@@ -53,7 +53,6 @@ const Step = ({ name }: StepProps) => {
     if (!routes) return;
 
     const newRoute = routes[routeIndex + 1];
-
     setRoute(newRoute);
     setRouteIndex((prev: any) => prev + 1);
     setRoutePath(newRoute.name);

@@ -27,7 +27,7 @@ const Preview = ({
     <div className="flex flex-col gap-5">
       <div className="py-10 flex flex-col items-center bg-[#B9BCC0] lg:rounded-lg">
         <p>
-          Step {routeIndex} of {routes.length}
+          Step {routeIndex} of {routes.length - 1}
         </p>
         <div className="flex flex-row gap-5 mt-5">
           {Array.from({ length: Math.max(1, routes.length) }, (_, index) => (
